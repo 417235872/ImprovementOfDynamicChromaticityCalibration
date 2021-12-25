@@ -4,7 +4,8 @@ from MyTool.dataPrehandle import *
 
 
 
-d_raw = wellData().cflog(0).iloc[2650:3800]#wellData().azigamma().iloc[160:930]#
+
+d_raw = wellData().azigamma().iloc[160:930]#wellData().cflog(0).iloc[2650:3800]#
 print("d_smoothly")
 d_smoothly = gaussianFilter(d_raw)
 print("d_dynamic")
@@ -19,16 +20,16 @@ d_AHE = dynamicOperation_QuicklyAutoAdjust(d_smoothly,transform_HE,100)
 # plt.subplot(1,5,1)
 # showImage(interpolation(d_smoothly))
 # addLabel("未做色度标定","角度方位，°","深度，m")
-plt.subplot(1,4,1)
+plt.subplot(1,3,1)
 showImage(interpolation(d_dynamic))
-addLabel("动态色度标定","角度方位，°","深度，m")
-plt.subplot(1,4,2)
-showImage(interpolation(d_meanValue))
-addLabel("平均值法","角度方位，°","深度，m")
-plt.subplot(1,4,3)
+addLabel("(a)动态色度标定","角度方位，°","深度，m")
+# plt.subplot(1,4,2)
+# showImage(interpolation(d_meanValue))
+# addLabel("平均值法","角度方位，°","深度，m")
+plt.subplot(1,3,2)
 showImage(interpolation(d_gradualChange))
-addLabel("渐变过渡法","角度方位，°","深度，m")
-plt.subplot(1,4,4)
+addLabel("(b)渐变过渡法","角度方位，°","深度，m")
+plt.subplot(1,3,3)
 showImage(interpolation(d_AHE))
-addLabel("自适应色度标定","角度方位，°","深度，m")
+addLabel("(c)限制步长法","角度方位，°","深度，m")
 plt.show()

@@ -204,13 +204,13 @@ def plotAutoAdjust_arg():
 
 def plotArg(index:int = 0):
     data = [a_raw,a_meanValue,a_GrandualChange,a_AutoAdjust]
-    name = ["动态色度标定","平均值法等效","渐变过渡法等效","自适应动态色度标定法等效"]
+    name = ["动态色度标定","平均值法等效","渐变过渡法等效","限制步长法等效"]
     plt.subplot(1, 2, 1)
     showArgument(data[index], 0)
-    addLabel(name[index]+"标定刻度系数$S$", "深度,$m$", "刻度系数")
+    addLabel("(a)"+name[index]+"标定刻度系数$S$", "深度,$m$", "刻度系数")
     plt.subplot(1, 2, 2)
     showArgument(data[index], 1)
-    addLabel(name[index]+"偏移量$V_{offset}$", "深度,$m$", "偏移量")
+    addLabel("(b)"+name[index]+"偏移量$V_{offset}$", "深度,$m$", "偏移量")
     plt.show()
 
 if __name__ == '__main__':
